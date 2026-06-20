@@ -1,3 +1,6 @@
+from tkinter import *
+import time
+from paragraph_text import get_paragraph_text
 from statistics import Statistics
 
 class TypingUI(Statistics):
@@ -11,7 +14,7 @@ class TypingUI(Statistics):
             text="Result",
             fg='black',
             bg='skyblue1',
-            font='Lucida\ Calligraphy 26 underline'
+            font='Lucida\\ Calligraphy 26 underline'
         )
         result.grid(row=0, columnspan=3, pady=40)
 
@@ -20,7 +23,7 @@ class TypingUI(Statistics):
             text='Accuracy',
             fg='black',
             bg='LightSalmon2',
-            font='Lucida\ Fax 22')
+            font='Lucida\\ Fax 22')
         lb_accuracy.grid(row=1, column=0)
 
         accuracy_val = Label(
@@ -28,7 +31,7 @@ class TypingUI(Statistics):
             text=f'{accuracy}%',
             fg='red',
             bg='khaki',
-            font='Lucida\ Fax 22 bold'
+            font='Lucida\\ Fax 22 bold'
         )
         accuracy_val.grid(row=1, column=1, columnspan=2)
 
@@ -37,7 +40,7 @@ class TypingUI(Statistics):
             text='Actual Accuracy',
             fg='black',
             bg='LightSalmon2',
-            font='Lucida\ Fax 22'
+            font='Lucida\\ Fax 22'
         )
         lb_actual_accuracy.grid(row=2, column=0, pady=(25, 0))
         accuracy_actual_val = Label(
@@ -45,7 +48,7 @@ class TypingUI(Statistics):
             text=f'{actual_accuracy}%',
             fg='red',
             bg='khaki',
-            font='Lucida\ Fax 22 bold'
+            font='Lucida\\ Fax 22 bold'
         )
         accuracy_actual_val.grid(row=2, column=1, columnspan=2, pady=(25, 0))
 
@@ -53,7 +56,7 @@ class TypingUI(Statistics):
             self.current_frame,
             text="WPM", fg='black',
             bg='LightSalmon2',
-            font='Lucida\ Fax 22'
+            font='Lucida\\ Fax 22'
         )
         lb_wpm.grid(row=3, column=0)
         val_wpm = Label(
@@ -61,7 +64,7 @@ class TypingUI(Statistics):
             text=f'{wpm}',
             fg='red',
             bg='khaki',
-            font='Lucida\ Fax 22 bold'
+            font='Lucida\\ Fax 22 bold'
         )
         val_wpm.grid(row=3, column=1, columnspan=2, pady=25)
 
@@ -70,14 +73,14 @@ class TypingUI(Statistics):
             text="Total Time",
             fg='black',
             bg='LightSalmon2',
-            font='Lucida\ Fax 22'
+            font='Lucida\\ Fax 22'
         )
         lb_time.grid(row=4, column=0)
         val_time = Label(
             self.current_frame,
             text=f'{total_time}',
             fg='red', bg='khaki',
-            font='Lucida\ Fax 22 bold'
+            font='Lucida\\ Fax 22 bold'
         )
         val_time.grid(
             row=4,
@@ -90,7 +93,7 @@ class TypingUI(Statistics):
             text='EXIT',
             fg='red',
             bg='plum1',
-            font='Verdana\ Pro 18 bold',
+            font='Verdana\\ Pro 18 bold',
             borderwidth=3,
             command=self.get_exit
         )
@@ -105,7 +108,7 @@ class TypingUI(Statistics):
             text='HOME',
             fg='red',
             bg='plum1',
-            font='Verdana\ Pro 18 bold',
+            font='Verdana\\ Pro 18 bold',
             borderwidth=3,
             command=self.back_to_home
         )
@@ -147,7 +150,7 @@ class TypingUI(Statistics):
             fg='black',
             bg='white',
             text=self.topic.get(),
-            font='Lucida\ Console 26 underline'
+            font='Lucida\\ Console 26 underline'
         )
         title.grid(row=0, column=0, columnspan=1, pady=50)
 
@@ -157,7 +160,7 @@ class TypingUI(Statistics):
             fg='red',
             bg='skyblue1',
             text='00:00',
-            font='Lucida\ Console 22 bold'
+            font='Lucida\\ Console 22 bold'
         )
         time_count.grid(row=0, column=2, pady=50)
 
@@ -168,7 +171,7 @@ class TypingUI(Statistics):
             bg='ivory3',
             width=1000,
             justify='center',
-            font='Verdana\ Pro 18'
+            font='Verdana\\ Pro 18'
         )
         place_holder.grid(row=2, column=0, columnspan=3, padx=80, pady=40)
 
@@ -183,7 +186,7 @@ class TypingUI(Statistics):
             relief=RAISED,
             padx=5,
             pady=5,
-            font='Verdana\ Pro 16')
+            font='Verdana\\ Pro 16')
 
         self.user_input.grid(row=3, column=0, columnspan=3, padx=30)
 
@@ -226,15 +229,27 @@ class TypingUI(Statistics):
             )
         )
 
-        title = Label(self.current_frame, fg='black', bg='white', text=self.topic.get(), font='Helvetica 22')
+        title = Label(
+            self.current_frame,
+            fg='black',
+            bg='white',
+            text=self.topic.get(),
+            font='Helvetica 22'
+        )
 
-        forward = Button(self.current_frame,
-                         text='>>',
-                         bg='lightblue1',
-                         fg='black',
-                         relief=RAISED,
-                         font='Helvetica 20',
-                         command=lambda: self.go_forward(backward, forward, title, place_holder))
+        forward = Button(
+            self.current_frame,
+            text='>>',
+            bg='lightblue1',
+            fg='black',
+            relief=RAISED,
+            font='Helvetica 20',
+            command=lambda: self.go_forward(
+                backward,
+                forward,
+                title,
+                place_holder)
+        )
 
         backward.grid(row=1, column=0, pady=35)
         title.grid(row=1, column=1, pady=35)
@@ -249,14 +264,14 @@ class TypingUI(Statistics):
             bg='ivory3',
             width=1000,
             justify='center',
-            font='Verdana\ Pro 18'
+            font='Verdana\\ Pro 18'
         )
         place_holder.grid(row=3, column=0, columnspan=3)
 
         start_test = Button(
             self.current_frame,
             text="Start Test",
-            font='Verdana\ Pro 15',
+            font='Verdana\\ Pro 15',
             borderwidth=3,
             bg='lightblue1',
             fg='black',
@@ -265,10 +280,14 @@ class TypingUI(Statistics):
         )
         start_test.grid(row=4, column=1, pady=10)
 
-        exit = Button(self.current_frame,
-                      text='Exit',
-                      font='Verdana\ Pro 15',
-                      borderwidth=3,
-                      bg='lightblue1', fg='black', relief=RAISED,
-                      command=self.get_exit)
+        exit = Button(
+            self.current_frame,
+            text='Exit',
+            font='Verdana\\ Pro 15',
+            borderwidth=3,
+            bg='lightblue1',
+            fg='black',
+            relief=RAISED,
+            command=self.get_exit
+        )
         exit.grid(row=5, column=1)
