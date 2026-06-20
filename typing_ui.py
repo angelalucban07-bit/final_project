@@ -139,9 +139,13 @@ class TypingUI(Statistics):
         if event.keysym == 'BackSpace':
             self.backspace_count += 1
 
-        self.key_press_count = len(self.get_user_text)
-        if self.key_press_count >= len(self.paragraph):
+        self._key_press_count = len(self.get_user_text)
+
+        if self._key_press_count >= len(
+                self.paragraph
+        ):
             self.end_time = time.time()
+
             self.show_typing_result()
 
     def start_typing(self) -> None:
@@ -171,7 +175,7 @@ class TypingUI(Statistics):
 
         place_holder = Message(
             self.current_frame,
-            text=self.paragraph,
+            text=self._paragraph,
             fg='black',
             bg='ivory3',
             width=1000,
@@ -261,11 +265,11 @@ class TypingUI(Statistics):
         title.grid(row=1, column=1, pady=35)
         forward.grid(row=1, column=2, pady=(35))
 
-        self.paragraph = get_paragraph_text(self.topic.get())
+        self._paragraph = get_paragraph_text(self.topic.get())
 
         place_holder = Message(
             self.current_frame,
-            text=self.paragraph,
+            text=self._paragraph,
             fg='black',
             bg='ivory3',
             width=1000,
