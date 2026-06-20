@@ -19,7 +19,7 @@ class TypingTest:
 
 class BaseWindow:
     def __init__(self):
-            '''Creating TKinter window and Frame '''
+        '''Creating TKinter window and Frame '''
         self.window = Tk()
         self.window.geometry("1345x680+0+0")
         self.window.title("Typing Speed And Accuracy Test")
@@ -118,6 +118,7 @@ class Timer:
         return int(self.end_time - self.start_time)
 
 
+class Statistics:
     def calculate_result(self) -> tuple:
         '''Calculating accuracy, actual accuracy, word per minute(wpm) and total time taken to type paragraph'''
         total_time = int(self.end_time - self.start_time)
