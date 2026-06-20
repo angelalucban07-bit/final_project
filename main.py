@@ -17,22 +17,29 @@ class TypingTest:
     backspace_count: int
     key_press_count: int
 
-    def __init__(self) -> None:
+class BaseWindow:
+    def __init__(self):
             '''Creating TKinter window and Frame '''
         self.window = Tk()
         self.window.geometry("1345x680+0+0")
         self.window.title("Typing Speed And Accuracy Test")
         self.window.configure(bg="azure2")
         self.window.minsize(1300, 680)
-        self.current_frame = Frame(self.window, bg="bisque2", width=1000, height=600)
+
+        self.current_frame = Frame(
+            self.window,
+            bg="bisque2",
+            width=1000,
+            height=600
+        )
         self.current_frame.pack()
-        self.para_count = IntVar()
-        self.topic = StringVar()
-        self.paragraph_topic = list(get_paragraph_topic())
-        self.start_flag = 0
-        self.seconds = 0
-        self.minutes = 0
-        self.backspace_count = 0
+
+        # self.para_count = IntVar() #moves this somewhere else into typing section
+        # self.topic = StringVar()
+        # self.paragraph_topic = list(get_paragraph_topic())
+        # self.start_flag = 0
+        # self.timer = Timer()
+        # self.backspace_count = 0
 
     def get_exit(self) -> None:
         '''Exit from the Tkinter window'''
