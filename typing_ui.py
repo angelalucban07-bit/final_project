@@ -4,11 +4,38 @@ from paragraph_text import get_paragraph_text
 from statistics import Statistics
 
 class TypingUI(Statistics):
+    para_count: IntVar
+    topic: StringVar
+    paragraph_topic: list
+
+    start_time: float
+    end_time: float
+    seconds: int
+    minutes: int
+
+    _start_flag: int
+    _backspace_count: int
+    _key_press_count: int
+    _get_user_text: str
+    _paragraph: str
+
+    def __init__(self):
+        super().__init__()
+
+        self.user_input = None
+        self.time_count = None
+
     def show_typing_result(self) -> None:
         '''Setting result interface for typing speed'''
         self.clear_frame()
 
-        (accuracy, actual_accuracy, wpm, total_time) = self.calculate_result()
+        (
+            accuracy,
+            actual_accuracy,
+            wpm,
+            total_time
+        ) = self.calculate_result()
+
         result = Label(
             self.current_frame,
             text="Result",
@@ -16,7 +43,11 @@ class TypingUI(Statistics):
             bg='skyblue1',
             font='Lucida\\ Calligraphy 26 underline'
         )
-        result.grid(row=0, columnspan=3, pady=40)
+        result.grid(
+            row=0,
+            columnspan=3,
+            pady=40
+        )
 
         lb_accuracy = Label(
             self.current_frame,
@@ -121,8 +152,8 @@ class TypingUI(Statistics):
 
     def key_release(self, event) -> None:
         '''Start timer and get user inputs'''
-        if self.start_flag == 0:
-            self.start_flag = 1
+        if self._start_flag == 0:
+            self._start_flag = 1
             self.start_time = time.time()
             self.update_timer(self.start_time)
 
@@ -131,15 +162,15 @@ class TypingUI(Statistics):
             'end - 1c'
         )
 
-        if self.paragraph.startswith(self.get_user_text):
+        if self._paragraph.startswith(self.get_user_text):
             self.user_input.config(fg='green')
         else:
             self.user_input.config(fg='red')
 
         if event.keysym == 'BackSpace':
-            self.backspace_count += 1
+            self._backspace_count += 1
 
-        self._key_press_count = len(self.get_user_text)
+        self._key_press_count = len(self._get_user_text)
 
         if self._key_press_count >= len(
                 self.paragraph
