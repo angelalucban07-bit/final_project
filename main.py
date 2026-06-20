@@ -82,7 +82,7 @@ class BaseWindow:
         self.paragraph = get_paragraph_text(self.topic.get())
         place_holder.config(text=self.paragraph)
 
-class Timer
+class Timer:
     def update_timer(self, s_time) -> None:
         '''Update timer in minute and second'''
         current_time = time.time()
@@ -106,7 +106,7 @@ class Timer
         time_format += ':' + '{:0>2d}'.format(int(total_time % 60))
         return time_format
 
-def get_time(self):
+    def get_time(self):
         """Return current time as mm:ss"""
         self.update()
         return f"{self.minutes:02}:{self.seconds:02}"
@@ -350,24 +350,39 @@ class TypingResult:
         self.para_count.set(0)
         self.topic.set(self.paragraph_topic[0])
 
-        header = Label(self.current_frame,
-                       text='Select Paragraph For Test',
-                       font='rockwell 25 bold underline',
-                       bg='white', fg='black')
+        header = Label(
+            self.current_frame,
+            text='Select Paragraph For Test',
+            font='rockwell 25 bold underline',
+            bg='white', fg='black'
+        )
         header.grid(row=0, column=1, pady=(40, 20))
 
-        backward = Button(self.current_frame,
-                          text='<<',
-                          bg='lightblue1', fg='black', relief=RAISED,
-                          font='Helvetica 20',
-                          state=DISABLED, command=lambda: self.go_backward(backward, forward, title, place_holder))
+        backward = Button(
+            self.current_frame,
+            text='<<',
+            bg='lightblue1',
+            fg='black',
+            relief=RAISED,
+            font='Helvetica 20',
+            state=DISABLED,
+            command=lambda: self.go_backward(
+                backward,
+                forward,
+                title,
+                place_holder
+            )
+        )
 
         title = Label(self.current_frame, fg='black', bg='white', text=self.topic.get(), font='Helvetica 22')
 
         forward = Button(self.current_frame,
                          text='>>',
-                         bg='lightblue1', fg='black', relief=RAISED,
-                         font='Helvetica 20', command=lambda: self.go_forward(backward, forward, title, place_holder))
+                         bg='lightblue1',
+                         fg='black',
+                         relief=RAISED,
+                         font='Helvetica 20',
+                         command=lambda: self.go_forward(backward, forward, title, place_holder))
 
         backward.grid(row=1, column=0, pady=35)
         title.grid(row=1, column=1, pady=35)
