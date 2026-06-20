@@ -162,7 +162,7 @@ class TypingUI(Statistics):
             'end - 1c'
         )
 
-        if self._paragraph.startswith(self.get_user_text):
+        if self._paragraph.startswith(self._get_user_text):
             self.user_input.config(fg='green')
         else:
             self.user_input.config(fg='red')
@@ -173,7 +173,7 @@ class TypingUI(Statistics):
         self._key_press_count = len(self._get_user_text)
 
         if self._key_press_count >= len(
-                self.paragraph
+                self._paragraph
         ):
             self.end_time = time.time()
 

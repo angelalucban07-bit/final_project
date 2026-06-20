@@ -20,8 +20,8 @@ class Statistics(Timer):
         correct_flag = True
 
         for para_char, user_char in zip(
-                self.paragraph,
-                self.get_user_text
+                self._paragraph,
+                self._get_user_text
         ):
             if para_char == user_char:
                 correct_letters += 1
@@ -42,14 +42,14 @@ class Statistics(Timer):
 
             accuracy = (
                 correct_letters * 100
-            ) / len(self.paragraph)
+            ) / len(self._paragraph)
 
             actual_accuracy = (
                     (
-                            correct_letters - self.backspace_count
+                            correct_letters - self._backspace_count
                     )
                     * 100
-            ) / len(self.paragraph)
+            ) / len(self._paragraph)
 
         return (
             int(accuracy),
