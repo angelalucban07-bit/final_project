@@ -11,11 +11,7 @@ class Statistics(Timer):
         if total_time == 0:
             total_time = 1
 
-            wpm = 0
-            correct_letters = 0
-            correct_words = 0
-            accuracy = 0
-            actual_accuracy = 0
+            wpm = correct_letters = correct_words = accuracy = actual_accuracy = 0
 
             correct_flag = 1
 

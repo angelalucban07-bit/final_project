@@ -2,7 +2,6 @@ from tkinter import *
 from paragraph_text import *
 from typing_ui import TypingUI
 
-
 class TypingTest(TypingUI):
     '''Includes all operation for Typing Test'''
 
@@ -11,7 +10,9 @@ class TypingTest(TypingUI):
 
         self.para_count = IntVar()
         self.topic = StringVar()
-        self.paragraph_topic = list(get_paragraph_topic())
+        self.paragraph_topic = list(
+            get_paragraph_topic()
+        )
 
         self.start_time = 0
         self.end_time = 0

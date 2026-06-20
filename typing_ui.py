@@ -155,14 +155,16 @@ class TypingUI(Statistics):
         title.grid(row=0, column=0, columnspan=1, pady=50)
 
         global time_count
-        time_count = Label(
+
+        self.time_count = Label(
             self.current_frame,
             fg='red',
             bg='skyblue1',
             text='00:00',
             font='Lucida\\ Console 22 bold'
         )
-        time_count.grid(row=0, column=2, pady=50)
+
+        self.time_count.grid(row=0, column=2, pady=50)
 
         place_holder = Message(
             self.current_frame,
@@ -199,7 +201,7 @@ class TypingUI(Statistics):
 
     def set_typing_home(self) -> None:
         '''Setting home environment for Typing Speed Test'''
-        if (self.current_frame != None):
+        if self.current_frame is not None:
             self.clear_frame()
 
         self.para_count.set(0)
@@ -209,7 +211,8 @@ class TypingUI(Statistics):
             self.current_frame,
             text='Select Paragraph For Test',
             font='rockwell 25 bold underline',
-            bg='white', fg='black'
+            bg='white',
+            fg='black'
         )
         header.grid(row=0, column=1, pady=(40, 20))
 

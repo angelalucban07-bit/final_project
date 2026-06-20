@@ -16,13 +16,15 @@ class Timer(BaseWindow):
         min_p = '{:0>2d}'.format(int(self.minutes))
         sec_p = '{:0>2d}'.format(int(self.seconds))
 
+        global time_count
+
         self.time_count.config(
             text=f'{min_p}:{sec_p}'
         )
 
         self.time_count.after(
-        1000,
-        lambda: self.update_timer(s_time)
+            1000,
+            lambda: self.update_timer(s_time)
         )
 
     def formatted_time(self, total_time) -> str:
