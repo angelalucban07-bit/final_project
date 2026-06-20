@@ -1,4 +1,6 @@
-class TypingUI:
+from statistics import Statistics
+
+class TypingUI(Statistics):
     def show_typing_result(self) -> None:
         '''Setting result interface for typing speed'''
         self.clear_frame()

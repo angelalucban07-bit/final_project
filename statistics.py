@@ -1,4 +1,6 @@
-class Statistics:
+from timer import Timer
+
+class Statistics(Timer):
     def calculate_result(self) -> tuple:
         '''Calculating accuracy, actual accuracy, word per minute(wpm) and total time taken to type paragraph'''
         total_time = int(self.end_time - self.start_time)

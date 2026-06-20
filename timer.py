@@ -1,4 +1,7 @@
-class Timer:
+from base_window import BaseWindow
+import time
+
+class Timer(BaseWindow):
     def update_timer(self, s_time) -> None:
         '''Update timer in minute and second'''
         current_time = time.time()
