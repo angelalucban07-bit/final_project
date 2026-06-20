@@ -117,11 +117,6 @@ def get_time(self):
             return int(time.time() - self.start_time)
         return int(self.end_time - self.start_time)
 
-    def formatted_time(self, total_time):
-        '''Formating total time in minutes and seconds'''
-        minutes = total_time // 60
-        seconds = total_time % 60
-        return f"{:02d}:{:02d}".format(minutes, seconds)
 
     def calculate_result(self) -> tuple:
         '''Calculating accuracy, actual accuracy, word per minute(wpm) and total time taken to type paragraph'''
@@ -159,43 +154,115 @@ def get_time(self):
         self.clear_frame()
         self.set_typing_home()
 
+class TypingResult:
     def show_typing_result(self) -> None:
         '''Setting result interface for typing speed'''
         self.clear_frame()
 
         (accuracy, actual_accuracy, wpm, total_time) = self.calculate_result()
-        result = Label(self.current_frame, text="Result", fg='black', bg='skyblue1',
-                       font='Lucida\ Calligraphy 26 underline')
+        result = Label(
+            self.current_frame,
+            text="Result",
+            fg='black',
+            bg='skyblue1',
+            font='Lucida\\ Calligraphy 26 underline'
+        )
         result.grid(row=0, columnspan=3, pady=40)
 
-        lb_accuracy = Label(self.current_frame, text='Accuracy', fg='black', bg='LightSalmon2', font='Lucida\ Fax 22')
+        lb_accuracy = Label(
+            self.current_frame,
+            text='Accuracy',
+            fg='black',
+            bg='LightSalmon2',
+            font='Lucida\\ Fax 22')
         lb_accuracy.grid(row=1, column=0)
-        accuracy_val = Label(self.current_frame, text=f'{accuracy}%', fg='red', bg='khaki', font='Lucida\ Fax 22 bold')
+
+        accuracy_val = Label(
+            self.current_frame,
+            text=f'{accuracy}%',
+            fg='red',
+            bg='khaki',
+            font='Lucida\\ Fax 22 bold'
+        )
         accuracy_val.grid(row=1, column=1, columnspan=2)
 
-        lb_actual_accuracy = Label(self.current_frame, text='Actual Accuracy', fg='black', bg='LightSalmon2',
-                                   font='Lucida\ Fax 22')
+        lb_actual_accuracy = Label(
+            self.current_frame,
+            text='Actual Accuracy',
+            fg='black',
+            bg='LightSalmon2',
+            font='Lucida\\ Fax 22'
+        )
         lb_actual_accuracy.grid(row=2, column=0, pady=(25, 0))
-        accuracy_actual_val = Label(self.current_frame, text=f'{actual_accuracy}%', fg='red', bg='khaki',
-                                    font='Lucida\ Fax 22 bold')
+        accuracy_actual_val = Label(
+            self.current_frame,
+            text=f'{actual_accuracy}%',
+            fg='red',
+            bg='khaki',
+            font='Lucida\ Fax 22 bold'
+        )
         accuracy_actual_val.grid(row=2, column=1, columnspan=2, pady=(25, 0))
 
-        lb_wpm = Label(self.current_frame, text="WPM", fg='black', bg='LightSalmon2', font='Lucida\ Fax 22')
+        lb_wpm = Label(
+            self.current_frame,
+            text="WPM", fg='black',
+            bg='LightSalmon2',
+            font='Lucida\ Fax 22'
+        )
         lb_wpm.grid(row=3, column=0)
-        val_wpm = Label(self.current_frame, text=f'{wpm}', fg='red', bg='khaki', font='Lucida\ Fax 22 bold')
+        val_wpm = Label(
+            self.current_frame,
+            text=f'{wpm}',
+            fg='red',
+            bg='khaki',
+            font='Lucida\ Fax 22 bold'
+        )
         val_wpm.grid(row=3, column=1, columnspan=2, pady=25)
 
-        lb_time = Label(self.current_frame, text="Total Time", fg='black', bg='LightSalmon2', font='Lucida\ Fax 22')
+        lb_time = Label(
+            self.current_frame,
+            text="Total Time",
+            fg='black',
+            bg='LightSalmon2',
+            font='Lucida\ Fax 22'
+        )
         lb_time.grid(row=4, column=0)
-        val_time = Label(self.current_frame, text=f'{total_time}', fg='red', bg='khaki', font='Lucida\ Fax 22 bold')
+        val_time = Label(
+            self.current_frame,
+            text=f'{total_time}',
+            fg='red', bg='khaki',
+            font='Lucida\ Fax 22 bold'
+        )
         val_time.grid(row=4, column=1, columnspan=2)
 
-        lb_exit = Button(self.current_frame, text='EXIT', fg='red', bg='plum1', font='Verdana\ Pro 18 bold',
-                         borderwidth=3, command=self.get_exit)
-        lb_exit.grid(row=5, column=1, pady=50, padx=30)
-        lb_home = Button(self.current_frame, text='HOME', fg='red', bg='plum1', font='Verdana\ Pro 18 bold',
-                         borderwidth=3, command=self.back_to_home)
-        lb_home.grid(row=5, column=2, pady=50, padx=30)
+        lb_exit = Button(
+            self.current_frame,
+            text='EXIT', fg='red',
+            bg='plum1', font='Verdana\ Pro 18 bold',
+            borderwidth=3,
+            command=self.get_exit
+        )
+        lb_exit.grid(
+            row=5,
+            column=1,
+            pady=50,
+            padx=30
+        )
+        lb_home = Button(
+            self.current_frame,
+            text='HOME',
+            fg='red',
+            bg='plum1',
+            font='Verdana\ Pro 18 bold',
+            borderwidth=3,
+            command=self.back_to_home
+        )
+        lb_home.grid(
+            row=5,
+            column=2,
+            pady=50,
+            padx=30
+        )
 
     def key_release(self, event) -> None:
         '''Start timer and get user inputs'''
