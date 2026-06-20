@@ -1,3 +1,6 @@
+from tkinter import *
+from paragraph_text import *
+
 class BaseWindow:
     def __init__(self):
         '''Creating TKinter window and Frame '''
