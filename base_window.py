@@ -3,7 +3,7 @@ from paragraph_text import *
 
 class BaseWindow:
     def __init__(self):
-        '''Creating TKinter window and Frame '''
+        """Creating TKinter window and Frame """
         self.window = Tk()
         self.window.geometry("1345x680+0+0")
         self.window.title("Typing Speed And Accuracy Test")
@@ -24,7 +24,7 @@ class BaseWindow:
         self.window.quit()
 
     def clear_frame(self) -> None:
-        '''Destroy/Clear all widgets from current frame'''
+        """Destroy/Clear all widgets from current frame"""
         for wid in self.current_frame.winfo_children():
             wid.destroy()
 
@@ -53,7 +53,7 @@ class BaseWindow:
         )
         title.config(text=self.topic.get())
 
-        self._paragraph = get_paragraph_text(self.topic.get())
+        self.paragraph = get_paragraph_text(self.topic.get())
         place_holder.config(text=self.paragraph)
 
     def go_forward(
@@ -64,7 +64,9 @@ class BaseWindow:
             place_holder
     ) -> None:
         '''Traverse forward in Paragraph dictionary'''
-        if (self.para_count.get() == (len(self.paragraph_topic) - 2)):
+        if self.para_count.get() == (
+                len(self.paragraph_topic) - 2
+        ):
             forward.config(state=DISABLED)
         else:
             forward.config(state=NORMAL)

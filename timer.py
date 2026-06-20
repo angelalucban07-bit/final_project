@@ -38,10 +38,10 @@ class Timer(BaseWindow):
         )
         return time_format
 
-    # def get_time(self):
-    #     """Return current time as mm:ss"""
-    #     return f"{self.minutes:02}:{self.seconds:02}"
-    #
-    # def get_total_seconds(self):
-    #     """Return total elapsed seconds"""
-    #     return int(self.end_time - self.start_time)
+    def get_time(self):
+        """Return current time as mm:ss"""
+        return f"{self.minutes:02}:{self.seconds:02}"
+
+    def get_total_seconds(self):
+        """Return total elapsed seconds"""
+        return int(self.end_time - self.start_time)

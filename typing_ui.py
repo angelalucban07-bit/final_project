@@ -17,7 +17,7 @@ class TypingUI(Statistics):
     _backspace_count: int
     _key_press_count: int
     _get_user_text: str
-    _paragraph: str
+    paragraph: str
 
     def __init__(self):
         super().__init__()
@@ -162,7 +162,7 @@ class TypingUI(Statistics):
             'end - 1c'
         )
 
-        if self._paragraph.startswith(self._get_user_text):
+        if self.paragraph.startswith(self._get_user_text):
             self.user_input.config(fg='green')
         else:
             self.user_input.config(fg='red')
@@ -173,7 +173,7 @@ class TypingUI(Statistics):
         self._key_press_count = len(self._get_user_text)
 
         if self._key_press_count >= len(
-                self._paragraph
+                self.paragraph
         ):
             self.end_time = time.time()
 
@@ -206,7 +206,7 @@ class TypingUI(Statistics):
 
         place_holder = Message(
             self.current_frame,
-            text=self._paragraph,
+            text=self.paragraph,
             fg='black',
             bg='ivory3',
             width=1000,
@@ -296,11 +296,11 @@ class TypingUI(Statistics):
         title.grid(row=1, column=1, pady=35)
         forward.grid(row=1, column=2, pady=(35))
 
-        self._paragraph = get_paragraph_text(self.topic.get())
+        self.paragraph = get_paragraph_text(self.topic.get())
 
         place_holder = Message(
             self.current_frame,
-            text=self._paragraph,
+            text=self.paragraph,
             fg='black',
             bg='ivory3',
             width=1000,
