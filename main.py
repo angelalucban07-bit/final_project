@@ -290,21 +290,48 @@ class TypingResult:
         '''Setting environment for user to type paragraph text to check speed and accuracy'''
         self.clear_frame()
 
-        title = Label(self.current_frame, fg='black', bg='white', text=self.topic.get(),
-                      font='Lucida\ Console 26 underline')
+        title = Label(
+            self.current_frame,
+            fg='black',
+            bg='white',
+            text=self.topic.get(),
+            font='Lucida\ Console 26 underline'
+        )
         title.grid(row=0, column=0, columnspan=1, pady=50)
 
         global time_count
-        time_count = Label(self.current_frame, fg='red', bg='skyblue1', text='00:00', font='Lucida\ Console 22 bold')
+        time_count = Label(
+            self.current_frame,
+            fg='red',
+            bg='skyblue1',
+            text='00:00',
+            font='Lucida\ Console 22 bold'
+        )
         time_count.grid(row=0, column=2, pady=50)
 
-        place_holder = Message(self.current_frame, text=self.paragraph, fg='black', bg='ivory3', width=1000,
-                               justify='center', font='Verdana\ Pro 18')
+        place_holder = Message(
+            self.current_frame,
+            text=self.paragraph,
+            fg='black',
+            bg='ivory3',
+            width=1000,
+            justify='center',
+            font='Verdana\ Pro 18'
+        )
         place_holder.grid(row=2, column=0, columnspan=3, padx=80, pady=40)
 
-        self.user_input = Text(self.current_frame, width=80, height=10, bg='floral white', fg='black',
-                               insertbackground='green', borderwidth=5, relief=RAISED, padx=5, pady=5,
-                               font='Verdana\ Pro 16')
+        self.user_input = Text(
+            self.current_frame,
+            width=80,
+            height=10,
+            bg='floral white',
+            fg='black',
+            insertbackground='green',
+            borderwidth=5,
+            relief=RAISED,
+            padx=5,
+            pady=5,
+            font='Verdana\ Pro 16')
 
         self.user_input.grid(row=3, column=0, columnspan=3, padx=30)
 
@@ -348,12 +375,27 @@ class TypingResult:
 
         self.paragraph = get_paragraph_text(self.topic.get())
 
-        place_holder = Message(self.current_frame, text=self.paragraph, fg='black', bg='ivory3', width=1000,
-                               justify='center', font='Verdana\ Pro 18')
+        place_holder = Message(
+            self.current_frame,
+            text=self.paragraph,
+            fg='black',
+            bg='ivory3',
+            width=1000,
+            justify='center',
+            font='Verdana\ Pro 18'
+        )
         place_holder.grid(row=3, column=0, columnspan=3)
 
-        start_test = Button(self.current_frame, text="Start Test", font='Verdana\ Pro 15', borderwidth=3,
-                            bg='lightblue1', fg='black', relief=RAISED, command=self.start_typing)
+        start_test = Button(
+            self.current_frame,
+            text="Start Test",
+            font='Verdana\ Pro 15',
+            borderwidth=3,
+            bg='lightblue1',
+            fg='black',
+            relief=RAISED,
+            command=self.start_typing
+        )
         start_test.grid(row=4, column=1, pady=10)
 
         exit = Button(self.current_frame,
