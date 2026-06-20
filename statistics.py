@@ -11,9 +11,9 @@ class Statistics(Timer):
         if total_time == 0:
             total_time = 1
 
-            wpm = correct_letters = correct_words = accuracy = actual_accuracy = 0
+        wpm = correct_letters = correct_words = accuracy = actual_accuracy = 0
 
-            correct_flag = 1
+        correct_flag = 1
 
         for para_char, user_char in zip(
                 self.paragraph,
@@ -36,8 +36,14 @@ class Statistics(Timer):
 
             wpm = correct_words / (float(total_time) / 60)
 
-            accuracy = (correct_letters * 100) / len(self.paragraph)
-            actual_accuracy = (correct_letters - self.backspace_count) * 100 / len(self.paragraph)
+            accuracy = (
+                correct_letters * 100
+            ) / len(self.paragraph)
+
+            actual_accuracy = (
+                (correct_letters - self.backspace_count)
+                * 100
+                ) / len(self.paragraph)
 
         return (
             int(accuracy),
