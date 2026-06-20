@@ -46,13 +46,23 @@ class BaseWindow:
 
         self.para_count.set(
             self.para_count.get() - 1)
-        self.topic.set(self.paragraph_topic[self.para_count.get()])
+        self.topic.set(
+            self.paragraph_topic[
+                self.para_count.get()
+            ]
+        )
         title.config(text=self.topic.get())
 
-        self.paragraph = get_paragraph_text(self.topic.get())
+        self._paragraph = get_paragraph_text(self.topic.get())
         place_holder.config(text=self.paragraph)
 
-    def go_forward(self, backward, forward, title, place_holder) -> None:
+    def go_forward(
+            self,
+            backward,
+            forward,
+            title,
+            place_holder
+    ) -> None:
         '''Traverse forward in Paragraph dictionary'''
         if (self.para_count.get() == (len(self.paragraph_topic) - 2)):
             forward.config(state=DISABLED)
@@ -62,7 +72,11 @@ class BaseWindow:
         backward.config(state=NORMAL)
 
         self.para_count.set(self.para_count.get() + 1)
-        self.topic.set(self.paragraph_topic[self.para_count.get()])
+        self.topic.set(
+            self.paragraph_topic[
+                self.para_count.get()
+            ]
+        )
         title.config(text=self.topic.get())
 
         self.paragraph = get_paragraph_text(self.topic.get())

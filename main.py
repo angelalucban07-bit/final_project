@@ -19,12 +19,12 @@ class TypingTest(TypingUI):
         self.seconds = 0
         self.minutes = 0
 
-        self.start_flag = 0
-        self.backspace_count = 0
-        self.key_press_count = 0
-        self.get_user_text = ""
+        self._start_flag = 0
+        self._backspace_count = 0
+        self._key_press_count = 0
+        self._get_user_text = ""
 
-        self.paragraph = ""
+        self._paragraph = ""
 
     def reset_data(self) -> None:
         '''Reset variables for next typing test'''

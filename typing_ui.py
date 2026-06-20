@@ -126,7 +126,10 @@ class TypingUI(Statistics):
             self.start_time = time.time()
             self.update_timer(self.start_time)
 
-        self.get_user_text = self.user_input.get('1.0', 'end - 1c')
+        self._get_user_text = self.user_input.get(
+            '1.0',
+            'end - 1c'
+        )
 
         if self.paragraph.startswith(self.get_user_text):
             self.user_input.config(fg='green')
