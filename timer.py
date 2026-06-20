@@ -6,8 +6,9 @@ class Timer(BaseWindow):
         '''Update timer in minute and second'''
         current_time = time.time()
 
-        if (int(current_time - s_time) >= 0):
+        if int(current_time - s_time) >= 0):
             self.seconds += 1
+
         if self.seconds == 60:
             self.seconds = 0
             self.minutes += 1
@@ -16,7 +17,10 @@ class Timer(BaseWindow):
         sec_p = '{:0>2d}'.format(int(self.seconds))
 
         time_count.config(text=f'{min_p}:{sec_p}')
-        time_count.after(1000, lambda: self.update_timer(s_time))
+        time_count.after(
+        1000,
+        lambda: self.update_timer(s_time)
+        )
 
     def formatted_time(self, total_time) -> str:
         '''Formating total time in minutes and seconds'''
@@ -27,11 +31,9 @@ class Timer(BaseWindow):
 
     def get_time(self):
         """Return current time as mm:ss"""
-        self.update()
         return f"{self.minutes:02}:{self.seconds:02}"
 
     def get_total_seconds(self):
         """Return total elapsed seconds"""
         if self.running:
-            return int(time.time() - self.start_time)
         return int(self.end_time - self.start_time)
