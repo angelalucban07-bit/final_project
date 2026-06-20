@@ -3,7 +3,6 @@ from tkinter import font
 from paragraph_text import *
 import time
 
-
 class TypingTest:
     '''Includes all operation for Typing Test'''
     window: Tk
@@ -19,7 +18,7 @@ class TypingTest:
     key_press_count: int
 
     def __init__(self) -> None:
-        '''Creating TKinter window and Frame '''
+            '''Creating TKinter window and Frame '''
         self.window = Tk()
         self.window.geometry("1345x680+0+0")
         self.window.title("Typing Speed And Accuracy Test")
@@ -76,28 +75,38 @@ class TypingTest:
         self.paragraph = get_paragraph_text(self.topic.get())
         place_holder.config(text=self.paragraph)
 
-    def update_timer(self, s_time) -> None:
+class Timer
+    def __init__(self)
         '''Update timer in minute and second'''
-        current_time = time.time()
 
-        if (int(current_time - s_time) >= 0):
-            self.seconds += 1
-        if self.seconds == 60:
             self.seconds = 0
-            self.minutes += 1
+            self.seconds = 0
+            self.minutes = 10
+            self.running = False
 
-        min_p = '{:0>2d}'.format(int(self.minutes))
-        sec_p = '{:0>2d}'.format(int(self.seconds))
+    def update(self):
+        """Update minutes and seconds"""
+        if self.running:
+            elapsed = int(time.time() - self.start_time)
+            self.minutes = elapsed // 60
+            self.seconds = elapsed % 60
 
-        time_count.config(text=f'{min_p}:{sec_p}')
-        time_count.after(1000, lambda: self.update_timer(s_time))
+    def get_time(self):
+        """Return current time as mm:ss"""
+        self.update()
+        return f"{self.minutes:02}:{self.seconds:02}"
 
-    def formatted_time(self, total_time) -> str:
+    def get_total_seconds(self):
+        """Return total elapsed seconds"""
+        if self.running:
+            return int(time.time() - self.start_time)
+        return int(self.end_time - self.start_time)
+
+    def formatted_time(self, total_time):
         '''Formating total time in minutes and seconds'''
-        time_format = ""
-        time_format = '{:0>2d}'.format(int(total_time / 60))
-        time_format += ':' + '{:0>2d}'.format(int(total_time % 60))
-        return time_format
+        minutes = total_time // 60
+        seconds = total_time % 60
+        return f"{minutes:02}:{seconds:02}"
 
     def calculate_result(self) -> tuple:
         '''Calculating accuracy, actual accuracy, word per minute(wpm) and total time taken to type paragraph'''
